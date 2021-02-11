@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:18.04
 
 # Create local user accounts
 RUN adduser alice --gecos --disabled-password && \
@@ -11,21 +11,22 @@ RUN apt-get update && \
         krb5-user \
         wget \
         bzip2 \
+	gcc-6 \
         ca-certificates
 
 # Install miniconda to get jupyterhub
-RUN wget -q https://repo.continuum.io/miniconda/Miniconda3-4.2.12-Linux-x86_64.sh -O /tmp/miniconda.sh  && \
-    echo 'd0c7c71cc5659e54ab51f2005a8d96f3 */tmp/miniconda.sh' | md5sum -c - && \
+RUN wget -q https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /tmp/miniconda.sh  && \
+#    echo '718259965f234088d785cad1fbd7de03 */tmp/miniconda.sh' | md5sum -c - && \
     bash /tmp/miniconda.sh -f -b -p /opt/conda && \
     rm /tmp/miniconda.sh
 
 RUN /opt/conda/bin/conda install --yes -c conda-forge \
-    python=3.5 \
-    notebook=5.0.0 \
-    idna=2.5 \
-    jupyterhub=0.7.2 \
-    'pamela>=0.3' \
-    sudospawner=0.4.1 && \
+    python=3.7 \
+    notebook=* \
+    idna=* \
+    jupyterhub=* \
+    pamela=* \
+    sudospawner=* && \
     /opt/conda/bin/conda clean -tipsy
 
 # Configure kerberos

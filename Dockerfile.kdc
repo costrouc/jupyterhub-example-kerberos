@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:18.04
 
 # Make a directory for logs
 RUN mkdir -p /var/log/kerberos
