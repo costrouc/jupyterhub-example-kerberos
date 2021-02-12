@@ -16,7 +16,7 @@ RUN apt-get update && \
 
 # Install miniconda to get jupyterhub
 RUN wget -q https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O /tmp/miniconda.sh  && \
-#    echo '718259965f234088d785cad1fbd7de03 */tmp/miniconda.sh' | md5sum -c - && \
+    echo '122c8c9beb51e124ab32a0fa6426c656 */tmp/miniconda.sh' | md5sum -c - && \
     bash /tmp/miniconda.sh -f -b -p /opt/conda && \
     rm /tmp/miniconda.sh
 
